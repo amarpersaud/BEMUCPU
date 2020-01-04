@@ -34,6 +34,10 @@ namespace BEMUCPU
             set
             {
                 _oe = value;
+                BUS = (Bus)(BUS | this); //Bitwise ORs the bus and the register's value.
+                //TODO : Decide how to reset the Bus after output has been disabled without
+                //interfering with other things that may be outputting to the bus
+                //simultaneously.
             }
         }
 
@@ -52,6 +56,6 @@ namespace BEMUCPU
         {
             this.Name = Name;
         }
-        
+       
     }
 }
