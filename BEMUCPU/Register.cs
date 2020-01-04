@@ -10,29 +10,63 @@ namespace BEMUCPU
     /// Representation of the SN74AHCT374 
     /// Octal Edge-Triggered D-Type Flip Flops used
     /// as registers in the CPU.
+    /// 
+    /// Positive edge triggered.
     /// </summary>
     public class Register
     {
-        private int[] Values;
+        /// <summary>
+        /// Underlying values.
+        /// </summary>
+        private bool[] Values;
+
+        /// <summary>
+        /// Name of the Register. Not necessary, just useful for
+        /// keeping track of things.
+        /// </summary>
         public string Name;
 
-        public bool WriteEnable;
+        /// <summary>
+        /// Output enabled.
+        /// </summary>
+        public bool OutputEnable
+        {
+            get;
+            set;
+        }
 
+        /// <summary>
+        /// Reference to the Bus.
+        /// </summary>
         public Bus BUS;
 
 
+        /// <summary>
+        /// Create a register with [size] bits called [name]
+        /// </summary>
+        /// <param name="size">Number of bits</param>
+        /// <param name="Name">Name of the register</param>
         public Register(int size, string Name)
         {
-            Values = new int[size];
+            Values = new bool[size];
             this.Name = Name;
 
         }
 
+        /// <summary>
+        /// Size of the register in bits
+        /// </summary>
         public int Size
         {
             get { return Values.Length; }
         }
-        public int this[int index]
+
+        /// <summary>
+        /// Get/set the bit at [index]
+        /// </summary>
+        /// <param name="index">Bit to get/set</param>
+        /// <returns>Bit at [index]</returns>
+        public bool this[int index]
         {
             get
             {
@@ -53,7 +87,7 @@ namespace BEMUCPU
         {
             for(int i = 0; i < Values.Length; i++)
             {
-                Values[i] = 0;
+                Values[i] = false;
             }
         }
     }
