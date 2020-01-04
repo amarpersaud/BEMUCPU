@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace BEMUCPU
 {
-    public class Bus
+    public class Bus : BInt
     {
-        private int[] Values;
+        public Bus(int size) : base(size) {
 
-        public Bus(int size) {
-            Values = new int[size];
         }
-
-
     }
 }
