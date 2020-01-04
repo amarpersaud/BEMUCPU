@@ -13,6 +13,10 @@ namespace BEMUCPU
         /// </summary>
         private bool[] Values;
 
+        /// <summary>
+        /// Create BInt
+        /// </summary>
+        /// <param name="size"></param>
         public BInt(int size)
         {
             Values = new bool[size];
